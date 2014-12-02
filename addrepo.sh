@@ -26,9 +26,9 @@ do
 		exit
 	fi
 	PureRepoName=`echo "${RepoName}" | grep -P -o '[_a-zA-Z][_a-zA-Z0-9]*$'`
-	if [[ ${RepoName} == ${InputRepoName} ]]
+	if [[ ${PureRepoName} == ${InputRepoName} ]]
 	then
-		echo -e "\e[35;1m[Error]Repo ${InputUserName} already exists!\e[0m"
+		echo -e "\e[35;1m[Error]Repo ${PureRepoName} already exists!\e[0m"
 		exit
 	fi
 done
