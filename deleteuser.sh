@@ -48,6 +48,7 @@ do
 				sudo -u svn sed "/${InputUserName}/d" /home/svn/.svn-auth-file > /home/svn/.svn-auth-file-tmp
 				mv /home/svn/.svn-auth-file /home/svn/.svn-auth-file-bak
 				mv /home/svn/.svn-auth-file-tmp /home/svn/.svn-auth-file
+				rm /home/svn/users/${InputUserName}
 				Deleted=1
 			fi
 		fi

@@ -4,7 +4,7 @@ echo -e "\e[32;1mValid charaters: _0-9A-Za-z, start with A-Za-z\e[0m"
 
 read InputRepoName
 
-# Julge if InputRepoName valid
+# Judge if InputRepoName valid
 if [[ -z ${InputRepoName} ]]
 then
 	echo -e "\e[31;1m[Error]Repo's name is empty\e[0m"
@@ -16,7 +16,7 @@ then
 	exit
 fi
 
-# Julge if RepoName already exist
+# Judge if RepoName already exist
 for RepoName in /home/svn/repositories/*
 do
 	if [[ ${RepoName} == '/home/svn/repositories/*' ]]
@@ -37,8 +37,10 @@ done
 svnadmin create "/home/svn/repositories/${InputRepoName}"
 chown -R http.http "/home/svn/repositories/${InputRepoName}"
 
-# Create policy file
+# Create policy and last file
 sudo -u http touch "/home/svn/repositories/${InputRepoName}/conf/apacheauth"
+sudo -u http echo 0 > "/home/svn/repositories/${InputRepoName}/db/last"
+sudo -u http echo 0 > "/home/svn/repositories/${InputRepoName}/db/cronlast"
 
 # Done
 echo -e "\e[33;1mDone\e[0m"

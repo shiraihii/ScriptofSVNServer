@@ -36,7 +36,7 @@ do
 	echo >> /home/svn/.svn-policy-file-bak
 done
 
-mv /home/svn/.svn-policy-file-bak .svn-policy-file
+mv /home/svn/.svn-policy-file-bak /home/svn/.svn-policy-file
 
 echo -e "\e[33;1mDone\e[0m"
 
