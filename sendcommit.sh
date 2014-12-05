@@ -54,7 +54,10 @@ getlogofrev ${1} ${2}
 
 # write text of mail
 echo "    We inform you that User:${_AUTHORSVN} have just commit to Repo:${PureRepoName} at ${_TIMESVN} with message below." >> ${LOGFILE}
+echo ">>>>========================================================" >> ${LOGFILE}
 echo "    ${_MSGSVN}" >> ${LOGFILE}
+echo "<<<<========================================================" >> ${LOGFILE}
+echo "    revision increased to ${2} after this commit" >> ${LOGFILE}
 echo "" >> ${LOGFILE}
 
 # sendmail
