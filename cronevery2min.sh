@@ -7,7 +7,7 @@ do
 	let CRONLAST=`cat "${RepoName}/db/cronlast"`
 	if [[ ${CURRENT} -gt ${CRONLAST} ]]
 	then
-		for ((i=${CRONLAST};i<=${CURRENT};i++))
+		for ((i=$[${CRONLAST}+1];i<=${CURRENT};i++))
 		do
 			/home/svn/script/sendcommit.sh ${RepoName} ${i}
 		done
