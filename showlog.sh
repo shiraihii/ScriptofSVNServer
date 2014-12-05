@@ -90,7 +90,7 @@ do
 	fi
 done
 
-# append the status of RAID0
+# append the status of RAID1
 
 LOGFILE="/home/svn/.reportlog"
 cat << _EOF_ >> ${LOGFILE}
