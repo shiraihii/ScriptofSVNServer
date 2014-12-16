@@ -9,4 +9,4 @@ LOGFILE='/home/svn/.reportlog'
 # generate a mail
 /home/svn/script/showlog.sh
 
-mail -s "SVN Server Week Report" -c ${MAILADM1} ${MAILADM2} < ${LOGFILE}
+mail -v -s "SVN Server Week Report" -c ${MAILADM1} ${MAILADM2} -- -f "CyberSVNServer" < ${LOGFILE}

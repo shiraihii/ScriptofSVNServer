@@ -73,4 +73,15 @@ else
 	else
 		echo -e "\e[31;1m[SEVERE]Other Error! Please Contact Administrator!\e[0m"
 	fi
+	exit
 fi
+
+# send a mail to confirm
+cat << _EOF_ > /tmp/.mailconfirm
+Dear SVN Server User ${InputUserName}:
+    We send this mail to confirm if your email ${InputUserMailAddRe} can receive our inform.
+_EOF_
+
+mail -s "Confirm of Registering on CyberSVNServer" ${InputUserMailAdd} -- -f "SVN Server Inform" < /tmp/.mailconfirm
+echo -e "\e[32;1m[Important!]A Mail was sent to ${InputUserMailAdd}, Please check it!\e[0m"
+echo -e "\e[32;1m[Important!]If you can not receive it, please register with another mail\e[0m"

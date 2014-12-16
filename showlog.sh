@@ -40,7 +40,7 @@ function getlogofrev()
 	_TIMESVNRAW=`sed -n '8p' ${REVPFILE}`
 	_TIMESVNRA=`echo ${_TIMESVNRAW} | grep -P -o '^[^.]*'`
 	_TIMESVN=`echo ${_TIMESVNRA} | sed "s/T/ /"`
-	_MSGSVN=`sed -n '12p' ${REVPFILE}`
+	_MSGSVN=`sed '1,11d;$d' ${REVPFILE}`
 	echo "        ---------------------------------------------------------\n"
 	echo "        Rev:\t${2}------Author:${_AUTHORSVN} at ${_TIMESVN}\n"
 	echo "        ==>${_MSGSVN}\n"

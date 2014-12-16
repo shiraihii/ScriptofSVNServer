@@ -25,7 +25,7 @@ function getlogofrev()
 	_TIMESVNRAW=`sed -n '8p' ${REVPFILE}`
 	_TIMESVNRA=`echo ${_TIMESVNRAW} | grep -P -o '^[^.]*'`
 	_TIMESVN=`echo ${_TIMESVNRA} | sed "s/T/ /"`
-	_MSGSVN=`sed -n '12p' ${REVPFILE}`
+	_MSGSVN=`sed '1,11d;$d' ${REVPFILE}`
 }
 
 # temp file for mail
@@ -54,9 +54,9 @@ getlogofrev ${1} ${2}
 
 # write text of mail
 echo "    We inform you that User:${_AUTHORSVN} have just commit to Repo:${PureRepoName} at ${_TIMESVN} UTC with message below." >> ${LOGFILE}
-echo ">>>>========================================================" >> ${LOGFILE}
+echo "========================================================" >> ${LOGFILE}
 echo "    ${_MSGSVN}" >> ${LOGFILE}
-echo "<<<<========================================================" >> ${LOGFILE}
+echo "========================================================" >> ${LOGFILE}
 echo "    revision increased to ${2} after this commit" >> ${LOGFILE}
 echo "" >> ${LOGFILE}
 
@@ -65,7 +65,7 @@ for UserName in `awk '{print $1}' "${1}/conf/apacheauth"`
 do
 	if [[ ${UserName} != ${_AUTHORSVN} ]]
 	then
-		mail -s "SVN_Commited_by_${_AUTHORSVN}" `cat /home/svn/users/${UserName}` < ${LOGFILE}
+		mail -v -s "SVN_Commited_by_${_AUTHORSVN}" `cat /home/svn/users/${UserName}` -- -f "CyberSVNServer" < ${LOGFILE}
 	fi
 done
 
